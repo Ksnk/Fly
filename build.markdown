@@ -2,7 +2,7 @@
 
 Чтобы собрать проект вам понадобится
 
-* проект `preprocessor` - https://github.com/Ksnk/preprocessor
+* проект `preprocessor` - https://github.com/Ksnk/preprocessor. Можно скачать готовые файлы [отсюда](https://github.com/downloads/Ksnk/preprocessor/build.zip)
 * утилита `YUICompressor` - http://developer.yahoo.com/yui/compressor/
 
 ## использование батника make.bat
@@ -20,11 +20,13 @@
  *   fly.js - собственно файл, русующий муху
  *   03.png - картинка с мухой
 
-После появления файлов необходимо используя НГШСщьзкуыыщк минимизировать файл fly.js
+После появления файлов необходимо используя YUICompressor минимизировать файл fly.js
 
 ## использование phing
 
 phing - пакет pear для сборки файлов. Аналог ANT, только на PHP.
+
+Нужно скачать сборку preprocessor'а для phing [отсюда](https://github.com/downloads/Ksnk/preprocessor/build.phing.zip). После этого нужно поместить его в каталог `phing/tasks/ext/preprocessor/preprocessTask`.
 
 build.xml является файлом сборки для phing.
 Необходимо откорректировать строчку
@@ -42,4 +44,4 @@ target'ы `debug` и `browser` используют параметры
 
 которые нужно установить в каталог локального сервера и его адрес.
 
-`browser` выводит тестовую страничку на экран дефолтного броузера после коипрования на сервер всех нужных файлов.
+`browser` выводит тестовую страничку на экран дефолтного броузера после копирования на сервер всех нужных файлов.

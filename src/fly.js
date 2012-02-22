@@ -64,9 +64,8 @@ function the_fly(param){
 	 */
 	this.dist=function(cursor){
 		var dx=cursor.x-<%=$cWidth/2%>-this.coord.x, 
-			dy=-cursor.y+this.coord.y+<%=$cWidth/2%>,
-			dd=Math.sqrt(dx*dx+dy*dy);
-		return dd;
+			dy=-cursor.y+this.coord.y+<%=$cWidth/2%>;
+        return	Math.sqrt(dx*dx+dy*dy);
 	};
 	/**
 	 * let fly to look at cursor
