@@ -7,7 +7,7 @@ var $ev={
 /**
  * debuger function
  */
-<% if($debug_enabled) { %>
+/*<% if($debug_enabled) { %>*/
 	debug:function(s,replace){
 	    if(!document.body) {
 	    	alert(s);
@@ -29,9 +29,9 @@ var $ev={
 		}
 		d.insertBefore(div,d.firstChild);
 	},
-<% } else { %>
+/*<% } else { %>*/
 	debug:function(){},
-<% }; %>
+/*<% }; %>*/
 /**
  * append script with callback
  */	

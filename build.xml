@@ -1,43 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project name="fly" default="init">
-	<property name="dir" value="fly"/>
-	<property name="test_dir" value="z:/home/anti.me/www/test"/>
-	<property name="test_url" value="http://anti.me/test/"/> 
+<project name="fly" default="release">
+
+    <taskdef name="preprocess" classname="phing.tasks.ext.preprocessor.preprocessTask" />
+    <taskdef name="minify" classname="phing.tasks.ext.kpMinTask" />
+
+    <property name="YUicompressor" value="/projects/tools/yuicompressor-2.4.5.jar"/>
+
+	<property name="test_dir" value="z:/home/localhost/www/fly"/>
+	<property name="test_url" value="http://localhost/fly/"/>
  
-	<property description="Common Folder" name="common_dir" location="Z:/xilen/common"/>
-	<target name="init">
-		<exec executable="SubWCRev" dir=".">
-			<arg file="."/>
-			<arg file="rev.txt"/>
-			<arg file="rev.tmp"/>	
-		</exec>
-		<copy  preservelastmodified="true" todir="build/debug">
-			<fileset file="03.png"/>
-		</copy>	
-		<copy  preservelastmodified="true" todir="build/release">
-			<fileset file="03.png"/>
-		</copy>	
-		<exec executable="Z:/usr/local/php5/php.exe" dir=".">
-			<arg value="-f"/>
-			<arg file="${common_dir}/preprocessor/preprocessor.php"/>
-			<arg value="/Dtarget=release"/>
-			<arg file="config.xml"/> 
-		</exec>
-		<exec executable="Z:/usr/local/php5/php.exe" dir=".">
-			<arg value="-f"/>
-			<arg file="${common_dir}/preprocessor/preprocessor.php"/>
-			<arg value="/Dtarget=debug"/>
-			<arg file="config.xml"/> 
-		</exec>
-		<java jar="${common_dir}/utils/js.jar" fork="true">
-            <arg value="${common_dir}/utils/min.js" />
-            <arg value="build/release/fly.js" />
-        </java>
-		<delete file="build/release/fly.js"/>
-        <copy  encoding="Cp1251" preservelastmodified="true" todir="${test_dir}">
-			<fileset dir="build/debug"/>
-		</copy>	
-		<delete file="rev.tmp"/>
-	</target>
-	
+	<property description="Common Folder" name="common_dir" value="Z:/xilen/common"/>
+
+    <target name="release">
+        <preprocess config="config.xml">
+            <param name="target" value="release"/>
+            <param name="dst" value="build/release"/>
+        </preprocess>
+        <phingcall target="minify-js" />
+    </target>
+
+    <target name="debug">
+        <preprocess config="config.xml">
+            <param name="target" value="debug"/>
+            <param name="dst" value="${test_dir}"/>
+        </preprocess>
+    </target>
+
+    <target name="minify-js">
+        <minify suffix='.min' yuiPath="${YUicompressor}">
+            <fileset dir="build/release">
+                <include name="*.js"/>
+                <exclude name="*.min.js"/>
+            </fileset>
+        </minify>
+    </target>
+
+    <target name="browser" depends="debug" description="run test">
+        <exec command="start ${test_url}" checkreturn="false" logoutput="false"/>
+    </target>
+
 </project>

@@ -1,37 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<!--  <% point_start('readme');%>
-----------------------------------------------------------------------------
-HTML5 Flies - flies walking on the page - version 1.0 
-----------------------------------------------------------------------------
-License GNU/LGPL - Serge Koriakin - June 2010
-http://forum.vingrad.ru/users/ksnk
-----------------------------------------------------------------------------
-
-Presentation :
-  HTML5 Flies is a sample of canvas-animation drawing. 
-  Script uses excanvas (http://excanvas.sourceforge.net/) for compatibility 
-  with Internet Explorer
-  
-Important :  
-  excanvas is licensed under the Apache License, Version 2.0. 
-  You will look at excanvas-modified.js file for detail
-
-Warning :
-  This script and the associated files are non commercial work.
-  It should not have unexpected results. However if any damage is caused by
-  this software the author can not be responsible.
-  The use of this software is at the risk of the user.
-
-----------------------------------------------------------------------------
-$<%="Id:$ID, Ver : $VERSION, Rev: $SVN_Revision, Modified: $SVN_Date"%> $
-----------------------------------------------------------------------------
-<% point_finish('readme');%> -->
+<!--
+<% echo POINT::get('hat','jscomment');
+echo POINT::get('descr','markdown-txt|jscomment');
+%>-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-<% // расчетка для картинки с мухой
+/*<% // расчетка для картинки с мухой
   if(empty($target)) $target="debug";
 
 if($target=="debug"){
@@ -57,7 +34,7 @@ if($target=="debug"){
   $cWidth=ceil(sqrt(pow($fWidth,2)+pow($fHeight,2)));
   $cHeight=$cWidth;
   
-%>
+%>*/
 <% point_start('fly_css'); %>
 #fly_prepare { position:absolute; visibility:hidden; top:0; left:0; }
 #debug {color:red; position:fixed; top:0; left:0;}

@@ -8,7 +8,7 @@ rem
 rem   Make shure, this is correct path to you PHP interpreter and main preprocessor file
 rem 
 if "%PHPBIN%" == ""  set PHPBIN=Z:\usr\local\php5\php.exe
-if "%PROCESSOR%"=="" set PROCESSOR=build\preprocessor.php
+if "%PROCESSOR%"=="" set PROCESSOR=..\preprocessor\build\preprocessor.php
 
 rem 
 rem   so let's go!
@@ -22,7 +22,7 @@ if not "%1"=="" goto next
 rem 
 rem  target to make all at once
 rem 
-set PAR=init
+set PAR=release
 
 :dolist
 
@@ -42,17 +42,10 @@ rem You can place your targets here
 rem
 
 
-:prebuild
+:release
 
-echo building from original sources
-%PHPBIN% -q  src/preprocessor.php /Ddst=build /Dtarget=release config.xml
-exit /b 0
-
-
-:init
-
-echo building init
-%PHPBIN% -q  %PROCESSOR% /Ddst=build /Dtarget=release config.xml
+echo building release
+%PHPBIN% -q  %PROCESSOR% /Dtarget=release /Ddst=build/release config.xml
 exit /b 0
 
 

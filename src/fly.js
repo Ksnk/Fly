@@ -1,4 +1,4 @@
-<%=point('readme','jscomment')%>
+/*<%=point('readme','comment')%>*/
 /*@cc_on @*/
 (function(){
 /**
@@ -66,7 +66,6 @@ function the_fly(param){
 		var dx=cursor.x-<%=$cWidth/2%>-this.coord.x, 
 			dy=-cursor.y+this.coord.y+<%=$cWidth/2%>,
 			dd=Math.sqrt(dx*dx+dy*dy);
-		//engine.debug('dist '+dd);	
 		return dd;
 	};
 	/**
@@ -76,7 +75,7 @@ function the_fly(param){
 		if(cursor.x!=-1){
 	    	var dx=cursor.x-<%=$cWidth/2%>-this.coord.x, dy=-cursor.y+this.coord.y+<%=$cWidth/2%>;
 	    	var dd=Math.sqrt(dx*dx+dy*dy);
-	    	if(dd>0.001){ // защита от деления на ноль
+	    	if(dd>0.001){ // Р·Р°С‰РёС‚Р° РѕС‚ РґРµР»РµРЅРёСЏ РЅР° РЅРѕР»СЊ
 	    		this.angle=Math.acos(dx/dd); if (dy<0) this.angle=-this.angle;
 	    	}
 		}
@@ -182,19 +181,19 @@ var engine={
 	 */
 	scroll:{x:0,y:0},	
 	calc_Bounds:function() {
-	    var padd = 20; // donow truly, but it's work :) mb possible scroller size?
+	  //  var padd = 20; // donow truly, but it's work :) mb possible scroller size?
 	    engine.window={
 	    	x:document.compatMode=='CSS1Compat' && !window.opera?document.documentElement.clientWidth:document.body.clientWidth,
 	    	y:document.compatMode=='CSS1Compat' && !window.opera?document.documentElement.clientHeight:document.body.clientHeight		
 	    };
 
-	    //Размер документа по горизонтали
+	    //Р Р°Р·РјРµСЂ РґРѕРєСѓРјРµРЅС‚Р° РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё
 	    engine.scroll={x:(document.documentElement && document.documentElement.scrollLeft) 
 	            		|| (document.body && document.body.scrollLeft),
 	    	           y:(document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop) 
 	   			};
 	},
-//<% insert_point ('object_paths'); %>
+/*<%=point ('object_paths'); %>*/
 	objects:[],
 	add:function(elem){
 		this.objects.push(elem);

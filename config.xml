@@ -1,12 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-	<files>
-		<file>rev.tmp</file>
+
+    <var name="git" default="git"/>
+    <files>
+        <echo>
+            <![CDATA[<%
+            POINT::inline('descr','
+Presentation :
+
+  HTML5 Flies is a sample of canvas-animation drawing.
+  Script uses excanvas (http://excanvas.sourceforge.net/) for compatibility
+  with Internet Explorer
+
+Important :
+
+  excanvas is licensed under the Apache License, Version 2.0.
+  You will look at excanvas-modified.js file for detail
+
+Warning :
+
+  This script and the associated files are non commercial work.
+  It should not have unexpected results. However if any damage is caused by
+  this software the author can not be responsible.
+  The use of this software is at the risk of the user.
+');
+
+
+            $version="HTML5 Flies - flies walking on the page";
+            $license="License MIT - Serge Koriakin <sergekoriakin@gmail.com>- June 2012";
+            // get the last tag from output
+            $output=array();
+            $tag = exec($git." describe --tags", $output);
+            //$GLOBALS['preprocessor']->log(2,'',$tag."\n");
+            // get a last string from output
+            $output=array();
+            $git_url = exec($git." remote -v", $output);
+            // get all output & filter him
+            $output=array();    exec($git." status -uno -s", $output);
+            $status='';
+            if(""!=(trim($modified=preg_replace("#\n+#","\n",preg_replace('#^.*?build/.*?$#m','',implode("\n",$output)))))){
+                $GLOBALS['preprocessor']->log(2,'"'.$modified."\"\n");
+                $status="status : draft build.\n";
+            };
+            $buildtime=date('ymdHi'); POINT::inline('hat',
+'----------------------------------------------------------------------------
+$Id: '.$version.',
+ver: '.$tag.', Last build: '.$buildtime.'
+'.$status.'GIT: '.$git_url.'$
+----------------------------------------------------------------------------
+'.$license.'
+----------------------------------------------------------------------------') ;
+%>]]>
+        </echo>
+    </files>
+
+	<files dir="src">
 		<file>fly.html</file>
 		<file>event.js</file>
 		<file>appendScript.js</file>
 	</files>
-	<files dstdir="build/$target">
+	<files dstdir="$dst" dir="src">
 		<file>fly.js</file>
 		<file>index.html</file>
 		<copy>03.png</copy>

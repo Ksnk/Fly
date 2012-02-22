@@ -4,7 +4,7 @@
  */
 
 var $ev={
-// <% point_start('object_paths') %>
+/* <% point_start('object_paths') %>*/
 /**
  *  here is a self-made event handling
  */
@@ -74,7 +74,7 @@ var $ev={
 			if(e.stopPropagation) e.stopPropagation();
 			return (e.returnValue = false);
 		},
-		//<% point_finish('object_paths') %>
+		/*<% point_finish('object_paths') %>*/
 		nothing:''
 };
 
