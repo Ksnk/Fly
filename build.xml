@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="fly" default="init">
+	<property name="dir" value="fly"/>
+	<property name="test_dir" value="z:/home/anti.me/www/test"/>
+	<property name="test_url" value="http://anti.me/test/"/> 
+ 
+	<property description="Common Folder" name="common_dir" location="Z:/xilen/common"/>
+	<target name="init">
+		<exec executable="SubWCRev" dir=".">
+			<arg file="."/>
+			<arg file="rev.txt"/>
+			<arg file="rev.tmp"/>	
+		</exec>
+		<copy  preservelastmodified="true" todir="build/debug">
+			<fileset file="03.png"/>
+		</copy>	
+		<copy  preservelastmodified="true" todir="build/release">
+			<fileset file="03.png"/>
+		</copy>	
+		<exec executable="Z:/usr/local/php5/php.exe" dir=".">
+			<arg value="-f"/>
+			<arg file="${common_dir}/preprocessor/preprocessor.php"/>
+			<arg value="/Dtarget=release"/>
+			<arg file="config.xml"/> 
+		</exec>
+		<exec executable="Z:/usr/local/php5/php.exe" dir=".">
+			<arg value="-f"/>
+			<arg file="${common_dir}/preprocessor/preprocessor.php"/>
+			<arg value="/Dtarget=debug"/>
+			<arg file="config.xml"/> 
+		</exec>
+		<java jar="${common_dir}/utils/js.jar" fork="true">
+            <arg value="${common_dir}/utils/min.js" />
+            <arg value="build/release/fly.js" />
+        </java>
+		<delete file="build/release/fly.js"/>
+        <copy  encoding="Cp1251" preservelastmodified="true" todir="${test_dir}">
+			<fileset dir="build/debug"/>
+		</copy>	
+		<delete file="rev.tmp"/>
+	</target>
+	
+</project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<files>
+		<file>rev.tmp</file>
+		<file>fly.html</file>
+		<file>event.js</file>
+		<file>appendScript.js</file>
+	</files>
+	<files dstdir="build/$target">
+		<file>fly.js</file>
+		<file>index.html</file>
+		<copy>03.png</copy>
+		<copy>excanvas-modified.js</copy>
+		<copy>bgx.jpg</copy>
+	</files>
+</config>

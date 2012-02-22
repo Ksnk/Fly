@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!--  <% point_start('readme');%>
+----------------------------------------------------------------------------
+HTML5 Flies - flies walking on the page - version 1.0 
+----------------------------------------------------------------------------
+License GNU/LGPL - Serge Koriakin - June 2010
+http://forum.vingrad.ru/users/ksnk
+----------------------------------------------------------------------------
+
+Presentation :
+  HTML5 Flies is a sample of canvas-animation drawing. 
+  Script uses excanvas (http://excanvas.sourceforge.net/) for compatibility 
+  with Internet Explorer
+  
+Important :  
+  excanvas is licensed under the Apache License, Version 2.0. 
+  You will look at excanvas-modified.js file for detail
+
+Warning :
+  This script and the associated files are non commercial work.
+  It should not have unexpected results. However if any damage is caused by
+  this software the author can not be responsible.
+  The use of this software is at the risk of the user.
+
+----------------------------------------------------------------------------
+$<%="Id:$ID, Ver : $VERSION, Rev: $SVN_Revision, Modified: $SVN_Date"%> $
+----------------------------------------------------------------------------
+<% point_finish('readme');%> -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style>
+<% // расчетка для картинки с мухой
+  if(empty($target)) $target="debug";
+
+if($target=="debug"){
+  $fName='03.png' ; // имя файла картинки
+  $excanvas='excanvas-modified.js'; // excanvas.compiled.js
+  // include debug function into 
+  $debug_enabled = true;
+} else {
+  $fName='http://ksnk.dpb.ru/fly/03.png' ; // имя файла картинки
+  $excanvas='http://ksnk.dpb.ru/fly/excanvas-modified.js'; // excanvas.compiled.js
+  // include debug function into 
+  $debug_enabled = false;
+}
+  //$fName='http://anti.me/test/04.png' ; // имя файла картинки
+  //$fName='03.png' ; // имя файла картинки
+  $fWidth=60;		// ширина
+  $fHeight=75; 		// высота 
+  $fFHeight=100;		// расстояние от кадра до кадра в картинке
+  $fAngle=M_PI/2;     // угол куда смотрит голова муха
+  
+  
+  // размеры канвы подбираются так, чтобы влезла муха под любым углом
+  $cWidth=ceil(sqrt(pow($fWidth,2)+pow($fHeight,2)));
+  $cHeight=$cWidth;
+  
+%>
+<% point_start('fly_css'); %>
+#fly_prepare { position:absolute; visibility:hidden; top:0; left:0; }
+#debug {color:red; position:fixed; top:0; left:0;}
+.fly {
+	position: absolute; top:0; left:0px; z-index:1000;
+/*	border:1px solid red;*/
+}
+<% point_finish('fly_css'); %>
+</style>
+</head>
+<body>
+<% point_start('prepare'); %>
+<img class="fly_src" id="fly_01" src="<%=$fName%>">
+<% point_finish('prepare'); %>
+</body>
+</html>
