@@ -6,18 +6,18 @@
         <echo>
             <![CDATA[<%
             POINT::inline('descr','
-Presentation :
+##Presentation :
 
   HTML5 Flies is a sample of canvas-animation drawing.
-  Script uses excanvas (http://excanvas.sourceforge.net/) for compatibility
+  Script uses [excanvas](http://excanvas.sourceforge.net/) for compatibility
   with Internet Explorer
 
-Important :
+##Important :
 
   excanvas is licensed under the Apache License, Version 2.0.
   You will look at excanvas-modified.js file for detail
 
-Warning :
+##Warning :
 
   This script and the associated files are non commercial work.
   It should not have unexpected results. However if any damage is caused by
