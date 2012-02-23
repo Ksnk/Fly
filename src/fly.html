@@ -11,14 +11,16 @@ echo POINT::get('descr','markdown-txt|jscomment');
 /*<% // расчетка для картинки с мухой
   if(empty($target)) $target="debug";
 
+  if(!isset($host)) $host = 'http://ksnk.500mb.net/fly/';
+
 if($target=="debug"){
   $fName='03.png' ; // имя файла картинки
   $excanvas='excanvas-modified.js'; // excanvas.compiled.js
   // include debug function into 
   $debug_enabled = true;
 } else {
-  $fName='http://ksnk.500mb.net/fly/03.png' ; // имя файла картинки
-  $excanvas='http://ksnk.500mb.net/fly/excanvas-modified.js'; // excanvas.compiled.js
+  $fName=$host.'03.png' ; // имя файла картинки
+  $excanvas=$host.'excanvas-modified.min.js'; // excanvas.compiled.js
   // include debug function into 
   $debug_enabled = false;
 }

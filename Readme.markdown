@@ -2,8 +2,8 @@
 
 Достаточно включить на свою страничку скрипт
 
-    <script type="text/javascript" src="http://ksnk.500mb.net/fly/fly.min.js"></script>
+    <script type="text/javascript" src="http://ksnk.github.com/Fly/fly.min.js"></script>
 
 и сразу появяться мухи на ней. Они будут летать, ползать, следить за курсором. Их можно разгонять курсором мышки, но не надолго.
 
-[Тестовая страничка](http://ksnk.500mb.net/fly/index.html)
+[Тестовая страничка](http://ksnk.github.com/Fly/)

@@ -19,8 +19,19 @@
         <phingcall target="minify-js" />
     </target>
 
+    <target name="release.page">
+        <property name="dst" value="..\fly.pages"/>
+        <preprocess config="config.xml">
+            <param name="target" value="release"/>
+            <param name="dst" value="${dst}"/>
+            <param name="host" value="http://ksnk.github.com/Fly/"/>
+        </preprocess>
+        <phingcall target="minify-js" />
+    </target>
+
     <target name="debug">
         <preprocess config="config.xml">
+            <param name="force" value="force"/>
             <param name="target" value="debug"/>
             <param name="dst" value="${test_dir}"/>
         </preprocess>
@@ -28,9 +39,15 @@
 
     <target name="minify-js">
         <minify suffix='.min' yuiPath="${YUicompressor}">
-            <fileset dir="build/release">
+            <fileset dir="${dst}">
                 <include name="*.js"/>
                 <exclude name="*.min.js"/>
+            </fileset>
+        </minify>
+        <minify suffix='.min' yuiPath="${YUicompressor}">
+            <fileset dir="${dst}">
+                <include name="*.css"/>
+                <exclude name="*.min.css"/>
             </fileset>
         </minify>
     </target>
