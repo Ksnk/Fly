@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="fly" default="release">
 
-    <taskdef name="preprocess" classname="phing.tasks.ext.preprocessor.preprocessTask" />
-    <taskdef name="minify" classname="phing.tasks.ext.kpMinTask" />
-
-    <property name="YUicompressor" value="/projects/tools/yuicompressor-2.4.5.jar"/>
+    <property name="YUICompressor" value="/projects/tools/yuicompressor-2.4.5.jar"/>
+    <property name="dst" value="..\ksnk.github.com\Fly"/>
 
 	<property name="test_dir" value="z:/home/localhost/www/fly"/>
 	<property name="test_url" value="http://localhost/fly/"/>
@@ -20,7 +18,7 @@
     </target>
 
     <target name="release.page">
-        <property name="dst" value="..\fly.pages"/>
+        <property name="dst" value="..\ksnk.github.com\Fly"/>
         <preprocess config="config.xml">
             <param name="target" value="release"/>
             <param name="dst" value="${dst}"/>
@@ -38,13 +36,13 @@
     </target>
 
     <target name="minify-js">
-        <minify suffix='.min' yuiPath="${YUicompressor}">
+        <minify suffix='.min' yuiPath="${YUICompressor}">
             <fileset dir="${dst}">
                 <include name="*.js"/>
                 <exclude name="*.min.js"/>
             </fileset>
         </minify>
-        <minify suffix='.min' yuiPath="${YUicompressor}">
+        <minify suffix='.min' yuiPath="${YUICompressor}">
             <fileset dir="${dst}">
                 <include name="*.css"/>
                 <exclude name="*.min.css"/>
