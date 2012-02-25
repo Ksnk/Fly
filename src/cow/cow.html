@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style>
+/*<% // расчетка для картинки с коровой
+  if(empty($target)) $target="debug";
+
+  if(!isset($host)) $host = 'http://ksnk.500mb.net/fly/';
+
+if($target=="debug"){
+  $fName='cow.png' ; // имя файла картинки
+  $excanvas='excanvas-modified.js'; // excanvas.compiled.js
+  // include debug function into 
+  $debug_enabled = true;
+} else {
+  $fName=$host.'cow.png' ; // имя файла картинки
+  $excanvas=$host.'excanvas-modified.min.js'; // excanvas.compiled.js
+  // include debug function into 
+  $debug_enabled = false;
+}
+  $fWidth=70;		// ширина
+  $fHeight=51; 		// высота
+  $fFHeight=50;		// расстояние от кадра до кадра в картинке
+  $fAngle=M_PI/2;     // угол куда смотрит голова муха
+  
+  
+  // размеры канвы подбираются так, чтобы влезла муха под любым углом
+  $cWidth=ceil(sqrt(pow($fWidth,2)+pow($fHeight,2)));
+  $cHeight=$cWidth;
+  
+%>*/
+<% POINT::start('fly_css'); %>
+#fly_prepare { position:absolute; visibility:hidden; top:0; left:0; }
+#debug {color:red; position:fixed; top:0; left:0;}
+.fly {
+	position: absolute; top:0; left:0px; z-index:1000;
+/*	border:1px solid red;*/
+}
+<% POINT::finish('fly_css'); %>
+</style>
+</head>
+<body>
+<% POINT::start('prepare'); %>
+<img class="fly_src" id="cow_01" src="<%=$fName%>">
+<% POINT::finish('prepare'); %>
+<script>
+
+/*<% POINT::start('init_fly'); %>
+{name:'cow',
+    cnt:2,
+    obj:{
+        fid:'cow_01',width:<%=$cWidth%>,height:<%=$cWidth%>,
+        fwidth:<%=$fWidth%>,fheight:<%=$fHeight%>,fFheight:<%=$fFHeight%>,
+        _x:<%=(-$cWidth-$fWidth)/2 +$cWidth/2%>,_y:<%=(-$cWidth-$fHeight)/2 +$cHeight/2%>
+    },
+
+    _default:{},
+
+    rules:{
+        walk:{
+            _mousemove:'stay',
+            _timeout:['walk','walk','stay'],
+            _impact:'flydown',
+            mintime:30,maxtime:60,speed:4,kadr:[[3,-2,1],[4,-2,1],[5,-2,1],[4,-2,1]],init:function(){
+            this.angle=this.lookat({x:Math.random()*engine.window.x+engine.scroll.x
+                ,y:Math.random()*engine.window.y+engine.scroll.y});
+        }},
+        flydown:{
+            _timeout:['walk','stay','stay','stay','fly'],
+            speed:80,
+            kadr:[[-2,-1]],mintime:6,maxtime:10,init:function(){
+            this.angle=3/2*Math.PI;
+        }},
+        walkaway:{
+            _timeout:['walk','stay','stay','stay','fly'],
+            _impact:'flydown',
+            speed:4,
+            kadr:[[3,-2,1],[4,-2,1],[5,-2,1],[4,-2,1]],
+            mintime:20,maxtime:40,
+            every:function(){this.angle=Math.PI+this.lookat(cursor)}
+        },
+        stay:{
+            _mousemove:'walkaway',
+            _timeout:['walk','stay','stay','stay','fly'],
+            _impact:'flydown',
+            kadr:[[6,-2,1]],mintime:20,maxtime:40,
+            every:function(){this.angle=this.lookat(cursor)}
+        },
+        fly:{
+            mintime:20,maxtime:40,
+            _timeout:['stay','fly'],
+            speed:30,kadr:[0],init:function(){
+            this.angle=this.lookat({x:Math.random()*engine.window.x+engine.scroll.x
+                ,y:Math.random()*engine.window.y+engine.scroll.y});
+        }},
+        hidden: {_timeout:['fly']}
+    }
+ },
+<% POINT::finish('init_fly'); %>*/
+</script>
+</body>
+</html>

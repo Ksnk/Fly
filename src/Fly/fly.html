@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <html>
-<!--
-<% echo POINT::get('hat','jscomment');
-echo POINT::get('descr','markdown-txt|jscomment');
-%>-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -37,19 +33,54 @@ if($target=="debug"){
   $cHeight=$cWidth;
   
 %>*/
-<% point_start('fly_css'); %>
+<% POINT::start('fly_css'); %>
 #fly_prepare { position:absolute; visibility:hidden; top:0; left:0; }
 #debug {color:red; position:fixed; top:0; left:0;}
 .fly {
 	position: absolute; top:0; left:0px; z-index:1000;
 /*	border:1px solid red;*/
 }
-<% point_finish('fly_css'); %>
+<% POINT::finish('fly_css'); %>
 </style>
 </head>
 <body>
-<% point_start('prepare'); %>
+<% POINT::start('prepare'); %>
 <img class="fly_src" id="fly_01" src="<%=$fName%>">
-<% point_finish('prepare'); %>
+<% POINT::finish('prepare'); %>
+<script>
+
+/*<% POINT::start('init_fly'); %>
+{name:'fly',
+    cnt:8,
+    obj:{
+        fid:'fly_01',width:<%=$cWidth%>,height:<%=$cWidth%>,
+        fwidth:<%=$fWidth%>,fheight:<%=$fHeight%>,fFheight:<%=$fFHeight%>,
+        _x:<%=(-$cWidth-$fWidth)/2 +$cWidth/2%>,_y:<%=(-$cWidth-$fHeight)/2 +$cHeight/2%>
+    },
+
+    _default:{mintime:50,maxtime:100,
+       _timeout:['walk','stay','fly'],
+       _impact:'fly',
+       _mousemove:'stay',
+       _mouseover:'hidden'
+    },
+
+    rules:{
+       'walk':{mintime:30,maxtime:60,speed:8,kadr:[1,2,3,0],init:function(){
+            this.angle=this.lookat({x:Math.random()*engine.window.x+engine.scroll.x
+                ,y:Math.random()*engine.window.y+engine.scroll.y});
+       }},
+       'stay':{kadr:[2],mintime:50,maxtime:100,every:function(){
+            this.angle=this.lookat(cursor);
+       }},
+       'fly':{speed:50,kadr:[4],init:function(){
+            this.angle=this.lookat({x:Math.random()*engine.window.x+engine.scroll.x
+                ,y:Math.random()*engine.window.y+engine.scroll.y});
+       }},
+       'hidden': {}
+    }
+ },
+<% POINT::finish('init_fly'); %>*/
+</script>
 </body>
 </html>

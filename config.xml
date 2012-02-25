@@ -55,18 +55,21 @@ ver: '.$tag.', Last build: '.$buildtime.'
     </files>
 
 	<files dir="src">
-		<file>fly.html</file>
+		<!--<file>Fly/fly.html</file>-->
+        <file>cow/cow.html</file>
 		<file>event.js</file>
 		<file>appendScript.js</file>
 	</files>
 
 	<files dstdir="$dst" dir="src">
 		<file>fly.js</file>
-		<copy>excanvas-modified.js</copy>
+        <copy dir="Fly">03.png</copy>
+        <copy dir="cow">cow.png</copy>
+        <copy>excanvas-modified.js</copy>
 	</files>
+
     <files dstdir="$dst" dir="src/samplepage">
         <file>index.html</file>
-        <copy>03.png</copy>
         <copy>markdown.css</copy>
         <copy>bgx.jpg</copy>
     </files>
